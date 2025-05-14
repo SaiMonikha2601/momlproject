@@ -1,7 +1,8 @@
 
 # Loads the sys module so you can access system-level info — especially for getting detailed error tracebacks.
 import sys
-import logging
+# import logging
+from src.logger import logging
 
 # Defines a function that accepts:
 # error: the actual error object (like ZeroDivisionError)
@@ -34,4 +35,12 @@ class CustomException(Exception):
     def __str__(self):
         return self.error_message       
 
+
+if __name__ == "__main__":
+
+    try:
+        a=1/0
+    except Exception as e:
+        logging.info("Divide by zero")
+        raise CustomException(e,sys)
 
